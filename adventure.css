@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani|Luckiest+Guy|Open+Sans:300|Cabin+Sketch|Italianno');
+
+:root {
+  --p-color: rgb(237, 204, 225);
+  --h1-color: rgb(237, 174, 215);
+  --header-color: rgba(68, 51, 106, 0.8);
+  --container-color: rgba(45, 3, 70, 0.3);
+  --nav-color: rgb(130, 54, 90);
+  --nav-hover-color: rgb(72, 8, 38);
+  --nav-hover-link-color: white;
+  --band-border: rgb(39, 89, 128);
+  --album-border: rgb(22, 69, 105);
+}
+
+body {
+  /* background: url("http://spiralgraphics.biz/packs/terrain_volcanic_gaseous/previews/Deep%20Cave.jpg"); */
+  background: linear-gradient(rgba(45, 3, 70, 0.25), rgba(45, 3, 70, 0.25)), url("http://spiralgraphics.biz/packs/terrain_volcanic_gaseous/previews/Deep%20Cave.jpg");
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 0px;
+  /*overflow-y: hidden;*/
+}
+
+h1 {
+  text-align: center;
+  font-family: "Cabin Sketch";
+  font-size: 72px;
+  background-color: var(--header-color);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: var(--h1-color);
+}
+
+h2, h3, h4 {
+  text-align: center;
+  font-family: "Open Sans";
+  color: var(--p-color);
+}
+
+p, ul {
+  font-family: "Open Sans";
+  font-size: 18px;
+  color: var(--p-color);
+}
+
+
+
+
+/***** NAV BAR *****/
+/*
+This Have nothing to do with this project Ms. Boyles
+
+.customnav {
+  background-color: var(--nav-color);
+  font-family: "Cabin Sketch";
+  padding: 20px;
+  margin-bottom: 50px;
+  margin-top: 0px;
+  font-size: 18px;
+  text-align: center;
+  list-style-type: none;
+  color: var(--p-color);
+}
+
+.customnav > li {
+  display: inline;
+}
+
+.customnav a:link, a:visited {
+  text-decoration: none;
+  padding: 20px;
+  color: var(--p-color);
+}
+
+.customnav a:hover {
+  background-color: var(--nav-hover-color);
+  color: var(--nav-hover-link-color);
+}
+*/
+/***** FLEX BOX *****/
+
+.container {
+  display: flex;
+  padding: 30px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.column {
+  flex: 1;
+}
+
+#col1 {
+  flex: 3;
+}
+
+.spacedcontainer {
+  margin-top: 50px !important;
+}
+
+/****** PICTURES *******/
+
+/*
+.bandpic {
+  border: 2px solid lightblue;
+  height: 180px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.albumpic {
+  border: 2px solid var(--nav-hover-color);
+  height: 220px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+*/
+
+.userinput {
+  width: 100%;
+  font-size: 18px;
+  font-family: "Open Sans";
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#adventuretext {
+  height: 57vh;
+    
+  background-color: rgba(50, 33, 20, 0.74);
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: "Open Sans";
+  color: var(--p-color);
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+#chesttext {
+  height: 118px;
+  font-size: 20px;
+  font-family: "Open Sans";
+  color: var(--p-color);
+  padding: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  overflow-y: auto;
+}
+
+#statustext {
+  height: 50px;
+  font-size: 20px;
+  font-family: "Open Sans";
+  color: var(--p-color);
+  padding: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+#commandVerbs {
+  height: 200px;  
+  font-size: 20px;
+  font-family: "Open Sans";
+  color: var(--p-color);
+  padding: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.commandtext {
+  color: rgb(163, 198, 252);
+}

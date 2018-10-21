@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Quest of Orpheus</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type='text/css' href="adventure.css" />
+</head>
+<body>
+
+<div class="container">
+  <div class="column" id="col1">
+    <center><h3 style="color: #FF7518;">The Quest of Orpheus</h3></center>
+      <div id="adventuretext"></div><br><br>
+      <input type="text" placeholder="Command" class="userinput" id="usercommand">
+  </div>
+  <div class="column" id="col2">
+    <h3 style="color: #D4AF37;">Status</h3>
+      <div id="statustext"></div>
+    <h3 style="color: #D4AF37;">Inventory</h3>
+      <div id="chesttext"></div>
+    <h3 style="color: #D4AF37;">Instructions</h3>
+      <div id="commandVerbs">
+        <ul>
+          <li>description</li>
+          <li>things</li>
+          <li>exits</li>
+          <li>go [location]</li>
+          <li>take [object]</li>
+          <li>use [object]</li>
+          <li>look [object]</li>
+          <li>talk [character]</li>
+          <li>attack [character]</li>
+          <li>give [object] [character]</li>
+          <li>look [object]</li>            
+          <li>restart</li>
+        </ul>
+      </div>
+  </div>
+</div>
+      
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="roomcreation.js"></script>
+<script src="adventure.js"></script>
+
+</body>
+</html>

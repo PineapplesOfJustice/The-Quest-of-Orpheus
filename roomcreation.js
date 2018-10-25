@@ -384,15 +384,15 @@ function makeRooms(){
 
 // Room[0] //    -------------------------------------------------------------------------------
     
-  rooms[0] = new Room("The Underworld", "red", "Orpheus enters a wide chasm settled with gems of every color glittering from the dome of the tall ceiling. They reflects the numerous torches that brighten the area. Stalactites formation is a beauty to behold. Orpheus is greeted by a pale soul, resembling a mid-aged man of aristocratic descend. The air is humid, signifying a nearby source of water. To the north-east, indeed Orpheus spots a gushing river. To the north, he noted Cerberus, gatekeeper of the Underworld. His golden lyre blends in with the rocks after he sets it down for a short rest.");  
+  rooms[0] = new Room("The Underworld", "red", "Orpheus enters a wide chasm settled with crimson diamonds glittering from the high ceiling above. They reflects the numerous torches that brighten the area. A pale soul greeted Orpheus. He resembles a mid-aged man of aristocratic descend. The air is humid signifying a nearby source of water. To the north-east, indeed, Orpheus spots a gushing river. To the north, he noted Cerberus, gatekeeper of the Underworld. Further beyond is a palace of dark obsidian. His golden lyre blends in with the rocks after he sets it down for a short rest.");  
   var currentRoomCreation = rooms[0];  
     currentRoomCreation.addExit("north", "The Main Gate", null, null);
     currentRoomCreation.addExit("northeast", "The River of Styx", null, null);
     currentRoomCreation.addExit("south", "Overworld's Tunnel", "retreivedEurydice", "Unless Eurydice cans accompany him, Orpheus vowed to not desert his own selfish cause.");
-    currentRoomCreation.addThing(new Thing(currentRoomCreation, "rock", "It is a plain obsidian rock. It feels cool when touched.", "inifinity", true));
+    currentRoomCreation.addThing(new Thing(currentRoomCreation, "rock", "It is a plain obsidian rock. It feels cool when touched.", "infinity", true));
       var currentThing = currentRoomCreation.things[currentRoomCreation.things.length-1];
       currentThing.addUsage(new Usage(currentThing, "any", "Orpheus juggles the rock with his swift hand. Up and up it goes again."));
-    currentRoomCreation.addThing(new Thing(currentRoomCreation, "lyre", "It is a beautiful golden lyre given by Apollo to him. It had been a dear friend and his sole source of solace during this painful time. Because of his musical skill, Orpheus cans charm anyone: living, dead, or inanimated.", "inifinity", true));
+    currentRoomCreation.addThing(new Thing(currentRoomCreation, "lyre", "It is a beautiful golden lyre given by Apollo to him. It had been a dear friend and his sole source of solace during this painful time. Because of his musical skill, Orpheus cans charm anyone: living, dead, or inanimated.", "infinity", true));
       var currentThing = currentRoomCreation.things[currentRoomCreation.things.length-1];  
       currentThing.addUsage(new Usage(currentThing, "The Main Gate", "Orpheus orchestrates a single sorrowful tune. It awes the observers. Cerberus howled along before settling down."));
         currentThing.usages[currentThing.usages.length-1].specialEffect = function(){
@@ -506,11 +506,11 @@ function makeRooms(){
     
 // Room[1] //    -------------------------------------------------------------------------------
   
-  rooms[1] = new Room("The Main Gate", "red", "Orpheus stands before a grand entrance. Surrounding it are thick spiked fortifications. Gruesome skulls collected dust at the bottom. Hoards of soul, fresh from their passage across the frigid River of Styx piles in line. They are waiting to cross the Field of Asphodel and be judged by their accomplishments while alived and assigned to one of three afterlives: the Fields of Punishment for the wicked, Elysium for the nobled, and the Field of Asphodel for the insipid. Orpheus dreads to see his beloved cramped inside this tight horde. With eyes looking forward, he saw Cerberus, the fierce three-headed dog, the loyal guard of Hades. Orpheus realized that he is the focus of Cerberus's intense gaze.");  
+  rooms[1] = new Room("The Main Gate", "red", "Orpheus stands before a grand entrance. Surrounding it are thick spiked fortifications. Gruesome skulls collected dust at the bottom. Meanwhile, hoards of souls, fresh from their passage across the River of Styx crowd the entrance. They are waiting to cross the Field of Asphodel and be judged by their accomplishments while alived and assigned to one of three afterlives: the Fields of Punishment for the wicked, Elysium for the nobled, and the Field of Asphodel for the insipid. Orpheus dreads to see his beloved cramped inside this tight horde. With eyes looking forward, he saw Cerberus, a fierce three-headed dog and loyal guard of Hades. Orpheus realized that he is the focus of Cerberus's intense gaze.");  
   var currentRoomCreation = rooms[1];  
     currentRoomCreation.addExit("north", "The Field of Asphodel", "charmedCerberus||killedCerberus", "Cerberus growls alarmingly. It is unadvised to willingly attempt to cross.");
     currentRoomCreation.addExit("south", "The Underworld", null, null);
-    currentRoomCreation.addThing(new Thing(currentRoomCreation, "coin", "It is a golden drachma, the staple currency of classical Greece. People were buried with a coin to paid Charon for the ferry's fare.", "inifinity", true));
+    currentRoomCreation.addThing(new Thing(currentRoomCreation, "coin", "It is a golden drachma, the staple currency of classical Greece. People were buried with a coin to paid Charon for the ferry's fare.", "infinity", true));
       var currentThing = currentRoomCreation.things[currentRoomCreation.things.length-1];
       currentThing.addUsage(new Usage(currentThing, "any", "Orpheus flips the coin. It lands on its side."));
         currentThing.usages[currentThing.usages.length-1].specialEffect = function(){
@@ -539,7 +539,7 @@ function makeRooms(){
 
 // Room[2] //    -------------------------------------------------------------------------------
     
-  rooms[2] = new Room("The River of Styx", "red", "Orpheus approaches a wide river of unknown depth. From old tales and experience, he knew that touching the river will bring extraordinary pains not replicable by any form of mortal torture techniques. In the distance, Charon is ferrying his way across with a boat of newly-dead souls. The air is humid and damp. Orpheus cans travel no farther in this direction.");  
+  rooms[2] = new Room("The River of Styx", "red", "Orpheus approaches a wide river of unknown depth. From old tales and experience, he knew that merely touching its water will bring extraordinary pain not replicable by any form of mortal torture techniques. In the distance, Charon is ferrying his way across with a boatload of the newly deads. The air is humid and damp. Orpheus cans travel no farther in this direction.");  
   var currentRoomCreation = rooms[2];  
     currentRoomCreation.addExit("southwest", "The Underworld", null, null);
     currentRoomCreation.addNpc(new Npc(currentRoomCreation, "river", null, "#C2B280", 10000, 0, 0, "neutral"));
@@ -557,7 +557,7 @@ function makeRooms(){
         currentQuestion.addResponse(new QuestionResponse(currentQuestion, "no", "Against his desires, Orpheus sided with his better judgment and did not swim in the river."));      
       currentNpc.addDialogue(new Dialogue(currentNpc, "...", new Question(currentNpc.dialogue, "narrator", "#FF7518", "Do you like to take a refreshing swim?", "Please answers the question."), "...", "...", "...", "..."));
         var currentQuestion = currentNpc.dialogue.hostile;
-        currentQuestion.addResponse(new QuestionResponse(currentQuestion, "yes", "Orpheus paddles into the river. Almost immediately, a million needles tingles his pain receptors, but the gods were on his side. Orpheus was blessed by a quick death and reunited with Eurydice."));
+        currentQuestion.addResponse(new QuestionResponse(currentQuestion, "yes", "Orpheus dives into the river. Almost immediately, a million needles tingles his pain receptors, but the gods were on his side. Orpheus was blessed by a quick death and reunited with Eurydice in Elysium."));
           var currentResponse = currentQuestion.responses[currentQuestion.responses.length-1];
           currentResponse.specialEffect = function(){
             orpheus.hp = 0;
@@ -565,7 +565,7 @@ function makeRooms(){
             showStatus(); 
             gameOverText("river");  
           }
-        currentQuestion.addResponse(new QuestionResponse(currentQuestion, "no", "Against his desires, Orpheus sided with his better judgment and did not swim in the river."));      
+        currentQuestion.addResponse(new QuestionResponse(currentQuestion, "no", "Against his desires, Orpheus sided with his better judgment and did not waddle into the river."));      
       currentNpc.addAttack(new Attack(currentNpc, "splash", "enemy", "userAC", 0, "The river splashes around on its normal course.", "The attack crippled Orpheus.", "The river splashes a little further than ususal.", "The attack misses.", "Orpheus is damaged."));
       
       currentNpc.addResponseToGifts(new ResponseToGift(currentNpc, "coin", "..!", false, true));
@@ -585,16 +585,16 @@ function makeRooms(){
 
 // Room[4] //    -------------------------------------------------------------------------------
     
-  rooms[4] = new Room("Training Ground", "red", "Orpheus approaches an open field cluttered with the undeads, each figthing another in organized pairs of two. Thousands of skeleton warriors hack at each other and many died. Although they crumpled to dust, the power of Hades reanimates the bodies of these skeletons to their previous state and continue their requiem anew. Neatly arranged on a nearby bench are swords of every size to suit the need of these warriors. One lone soldier stands by its side, training his mind mentally with an invisible foe. Here, speaking is nigh impossible with the clashing of swords; however, Orpheus didn't intends to anyway.");  
+  rooms[4] = new Room("Training Ground", "red", "Orpheus approaches an open field cluttered with the undeads, each sparring another in organized pairs of two. Thousands of skeleton warriors hack at each others and dies. Although they crumpled to dust, the Underworld reanimates the bodies of these skeletons to prolong the haunting requiem. Orpheus fails to imagine what horrific battle they are preparing for. Turning his gaze to a nearby hut, Orpheus finds swords of every size to suit the preference of these warriors. One lone soldier stands by its side, training his mind mentally with an invisible foe. Here, conversations are nigh impossible beneath the clashing of swords.");  
   var currentRoomCreation = rooms[4];  
     currentRoomCreation.addExit("east", "The Field of Asphodel", null, null);
-    currentRoomCreation.addThing(new Thing(currentRoomCreation, "sword", "It is a gilded obsidian sword. It is cold, but well-balanced for Orpheus's strong physique.", "inifinity", true));
+    currentRoomCreation.addThing(new Thing(currentRoomCreation, "sword", "It is a gilded obsidian sword. It is cold, but well-balanced for Orpheus's strong physique.", "infinity", true));
       var currentThing = currentRoomCreation.things[currentRoomCreation.things.length-1];
       currentThing.addUsage(new Usage(currentThing, "Training Ground", "Orpheus sheaths and unsheath his sword. He silently prays to Hades, gratified by the gift."));
       currentThing.addUsage(new Usage(currentThing, "Hades's Palace", "Orpheus tries to unsheathes his sword. Hades gazes intently at his left hand. On further re-evaluation, Orpheus let go of the sword."));
-      currentThing.addUsage(new Usage(currentThing, "any", "Orpheus swings his might sword purposely. Pleased by his strokes, Orpheus sheathes the obsidian blade."));
+      currentThing.addUsage(new Usage(currentThing, "any", "Orpheus swings his mighty sword purposely. Pleased by his strokes, Orpheus sheathes the obsidian blade."));
     
-    currentRoomCreation.addNpc(new Npc(currentRoomCreation, "skeleton", "He seems to blend with the others undead soldier; however, this one is without a parring partner.", "#D9D6CF", 10, 12, 7, "neutral"));
+    currentRoomCreation.addNpc(new Npc(currentRoomCreation, "skeleton", "He is a living human corpse. Adorned with mail armor the skeleton is doing image training by himself. Where is his partner?", "#D9D6CF", 10, 12, 7, "neutral"));
     //console.log(currentRoomCreation)
       var currentNpc = currentRoomCreation.npcs[currentRoomCreation.npcs.length-1];
       currentNpc.addDialogue(new Dialogue(currentNpc, "... [the skeleton takes a fighting stance]", "... [the skeleton looks ready to return the next blow]", "... [the skeleton takes a fighting stance]", "..! [the skeleton grins]", "...", "... [the skeleton shakes his head slowly once]"));
@@ -602,19 +602,19 @@ function makeRooms(){
       currentNpc.respawn = 10;
       
       currentNpc.addResponseToGifts(new ResponseToGift(currentNpc, "sword", "... [the skeleton draws his own blade]", true, false));
-      currentNpc.addResponseToMilestones(new ResponseToMilestone(currentNpc, "retreivedEurydice", "Good bye! [yells the skeleton loudly to overcome the screeching of blades]", false));
+      currentNpc.addResponseToMilestones(new ResponseToMilestone(currentNpc, "retreivedEurydice", "Good bye! [yells the skeleton loudly to overcome the screeching of blades, but barely audible]", false));
 
 
 // Room[5] //    -------------------------------------------------------------------------------
     
-  rooms[5] = new Room("Tartarus", "red", "Orpheus approaches a giant chasm. From within echoes dissonant whispers and screams of pains. Orpheus shuddered. From tales, he had heard of the Tartarus, the legendary prison of the Underworld from which there is no return. Its prisoners are said to be trapped in an indefinite cycle of gruesome pain. Even the gods, themselves feared its power and imprisoned their worst foes here. Unlike the rest of the Underworld which is dimly-litted by torches, the Tartarus is a vortex of true darkness.");  
+  rooms[5] = new Room("Tartarus", "red", "Orpheus loomed before a titanic cavern. From within echoes dissonant whispers and screams of agony. Orpheus shuddered. From tales, he had heard of the Tartarus, the legendary prison of the Underworld from which there is no return. Its prisoners are said to be trapped in an indefinite cycle of gruesome torments. Even the gods, themselves, feared its power and imprisoned their worst foes here. Unlike the rest of the Underworld which is dimly-litted by torches, the Tartarus is a vortex of true darkness.");  
   var currentRoomCreation = rooms[5];  
     currentRoomCreation.addExit("southeast", "The Field of Asphodel", null, null);
     currentRoomCreation.addNpc(new Npc(currentRoomCreation, "cave",null , "#C2B280", 10000, 0, 0, "neutral"));
       var currentNpc = currentRoomCreation.npcs[currentRoomCreation.npcs.length-1];
       currentNpc.description = new Question(currentNpc, "narrator", "#FF7518", "Tartarus echoes the pains of its prisoners. Orpheus fights against the gravitational force that seems to pull him closer to prison.<br>Do you want to enter Tartarus?", "Please answers the question.")
         var currentQuestion = currentNpc.description;
-        currentQuestion.addResponse(new QuestionResponse(currentQuestion, "yes", "Orpheus steps purposely into the cave before the floor abruptly shattered beneath his dangling feet. By the combined power of gravity and time, Orpheus reaches terminal velocity before crashing into the concrete and was prickled by the stalagmites that covered the entire landscape. The chance of returning dismal, Orpheus grew conscious of the blackhole that is his stomach. Looking around, Orpheus sees only rocks, darkness, and a river of burning fire."));
+        currentQuestion.addResponse(new QuestionResponse(currentQuestion, "yes", "Orpheus steps purposely into the cave before the floor abruptly shattered beneath his dangling feet. By the combined power of gravity and time, Orpheus reaches terminal velocity before crashing head first into the concrete and was prickled by the stalagmites that dotted the entire landscape. The chance of returning dismal, Orpheus grew conscious of the blackhole that is his stomach. Looking around, Orpheus sees only rocks, darkness, and a river of burning fire."));
         var currentResponse = currentQuestion.responses[currentQuestion.responses.length-1];
         currentResponse.specialEffect = function(){
           orpheus.hp = -1;
@@ -625,7 +625,7 @@ function makeRooms(){
       currentQuestion.addResponse(new QuestionResponse(currentQuestion, "no", "Against his desires, Orpheus sided with his better judgment and backed away from the cave."));
       currentNpc.addDialogue(new Dialogue(currentNpc, "...", new Question(currentNpc.dialogue, "narrator", "#FF7518", "Do you want to enter Tartarus?", "Please answers the question."), "...", "...", "...", "..."));
         var currentQuestion = currentNpc.dialogue.hostile;
-        currentQuestion.addResponse(new QuestionResponse(currentQuestion, "yes", "Orpheus steps purposely into the cave before the floor abruptly shattered beneath his dangling feet. By the combined power of gravity and time, Orpheus reaches terminal velocity before crashing into the concrete and was prickled by the hair-like spikes that covered the entire landscape. The chance of returning dismal, Orpheus grew conscious of the blackhole that is his stomach. Looking around, Orpheus sees only rocks, darkness, and a river of burning fire."));
+        currentQuestion.addResponse(new QuestionResponse(currentQuestion, "yes", "Orpheus steps purposely into the cave before the floor abruptly shattered beneath his dangling feet. By the combined power of gravity and time, Orpheus reaches terminal velocity before crashing head first into the concrete and was prickled by the stalagmites that dotted the entire landscape. The chance of returning dismal, Orpheus grew conscious of the blackhole that is his stomach. Looking around, Orpheus sees only rocks, darkness, and a river of burning fire."));
           var currentResponse = currentQuestion.responses[currentQuestion.responses.length-1];
           currentResponse.specialEffect = function(){
             orpheus.hp = -1;
@@ -642,7 +642,7 @@ function makeRooms(){
 
 // Room[6] //    -------------------------------------------------------------------------------
     
-  rooms[6] = new Room("Persephone's Garden", "red", "Orpheus enters a beautiful botanical garden humming with soft cricket sounds. On its trees hung glorious pomegrantes fruits. They are ripe and juicy. Though they exudes temptation, Orpheus knows better than to grasp the delicious treats for those who had once eaten the fruit of the Underworld shall be granted permanency as citizen of its territory. The Underworld is a tad too gloomy for Orpheus's sunny spirit.");  
+  rooms[6] = new Room("Persephone's Garden", "red", "Orpheus enters a beautiful botanical garden humming with soft cricket sounds. On its trees hung glorious burgundy fruits called pomegrantes. They are ripe and juicy. Though they exudes temptation, Orpheus knows better than to grasp the delicious treats. It is rumored that those who had once eaten the fruit of the Underworld shall be barred entrance to the world of the living. Strangely enough, Persephone is nowhere to be found.");  
   var currentRoomCreation = rooms[6];  
     currentRoomCreation.addExit("southwest", "The Field of Asphodel", null, null);
     currentRoomCreation.addExit("west", "Hades's Palace", null, null);
@@ -670,9 +670,9 @@ function makeRooms(){
       
       currentNpc.addResponseToGifts(new ResponseToGift(currentNpc, "pomegrante", "..!", false, true));
       currentNpc.addResponseToMilestones(new ResponseToMilestone(currentNpc, "retreivedEurydice", "These fruits shall end you.", false));
-     var pomegrante = new Thing(currentRoomCreation, "pomegrante", "It is a ripe and juicy pomegrante. The fruit is purple and seedy.", "inifinity", false);
+     var pomegrante = new Thing(currentRoomCreation, "pomegrante", "It is a ripe and juicy pomegrante. The fruit is purple and seedy.", "infinity", false);
       var currentThing = pomegrante;
-      currentThing.addUsage(new Usage(currentThing, "any", "Orpheus eats the tempting fruit greedily. It tasted sweet; however, Orpheus feels the same as before. Was the tale false?"));
+      currentThing.addUsage(new Usage(currentThing, "any", "Orpheus greedily inhaled the tempting fruit. It tasted sweet; however, Orpheus feels the same as before. Was the tale false?"));
         currentThing.usages[currentThing.usages.length-1].specialEffect = function(){    
           for(var i=0, length=milestone.length; i<length; i++){
             if(milestone[i] == "atePomegrante"){
@@ -692,16 +692,16 @@ function makeRooms(){
 
 // Room[7] //    -------------------------------------------------------------------------------
     
-  rooms[7] = new Room("Hades's Palace", "red", "Orpheus settled into an obsidian palace of unmatched grandoise. From the beginning of his entrance to the last, Orphues was watched. Undead servants of every type observe him from every angle and every location. It will be reckless to risk uneccesary motions. Ahead loomed Hades on his throne of skulls. To his side is the fair Persephone's his wife. If one cans bring back the dead. It will be the god of the Underworld, Hades.");  
+  rooms[7] = new Room("Hades's Palace", "red", "Orpheus settled into an obsidian palace of unmatched grandoise. From his first step to the last, Orpheus was watched. Undead servants of every ranks observe him with intense gazes as he pass by. Uneccesary motions will be reckless and suicidal. Ahead towered Hades above his throne of skulls. To his side is the fair Persephone, his wife and the goddess of spring. If one cans bring back the dead, it can only be the god of the Underworld, Hades.");  
   var currentRoomCreation = rooms[7];  
     currentRoomCreation.addExit("south", "The Field of Asphodel", null, null);
     currentRoomCreation.addExit("east", "Persephone's Garden", null, null);
-    currentRoomCreation.addNpc(new Npc(currentRoomCreation, "hades", "As a god, Hades cans assume any form he desires. Currently, he is mid-aged man with dark hair, dark eyes, and dark skin. He exudes a gloomy atmosphere. Probably not much had happens in the Underworld to pique his interest.", "#B57EDC", 10000, 12, 10, "neutral"));
+    currentRoomCreation.addNpc(new Npc(currentRoomCreation, "hades", "As a god, Hades cans assume any form he desires. Currently, he is mid-aged man with dark hair, dark eyes, and dark skin. He exudes a gloomy atmosphere. Not much had happens in the Underworld to pique his interest.", "#B57EDC", 10000, 12, 10, "neutral"));
       var currentNpc = currentRoomCreation.npcs[currentRoomCreation.npcs.length-1];
       currentNpc.addDialogue(new Dialogue(currentNpc, "Mortal, what do you seek?", "Insolence!", "Remember your oath. Do not look back!", "You made the wrong enemy Orpheus. I will return.", "Quiet!", "I do not need this offering."));      
       currentNpc.addAttack(new Attack(currentNpc, "finger of death", "enemy", "userAC", "d50", "Hades gazes intensely at Orpheus.", "The attack assulted Orpheus.", "Hades gots dry eyes. He needs to rest them more often.", "The attack misses.", "Orpheus is damaged."));
       currentNpc.addResponseToGifts(new ResponseToGift(currentNpc, "pomegrante", "Orpheus, do you understand what you are holding in your hands?", true, false));
-      currentNpc.addResponseToMilestones(new ResponseToMilestone(currentNpc, "charmedPersephone", "Sigh, Persephone had personally requested the release of Eurydice for your sake. Cherish it well for such an occasion shall not happen again. In exchange, you must swear before me to not look back at Eurydice until you exit the Underworld. Farewell, Orpheus.", false));
+      currentNpc.addResponseToMilestones(new ResponseToMilestone(currentNpc, "charmedPersephone", "Sigh, Persephone had personally requested the release of Eurydice for your sake. Cherish it well for such an occasion shall not happen again. In exchange, you must swear before me to not look at Eurydice until both of you exit the Underworld. Farewell, Orpheus.", false));
         currentNpc.responseToMilestones[currentNpc.responseToMilestones.length-1].specialEffect = function(){
           milestone.push("retreivedEurydice");  
           chest.push(spirit);  
@@ -713,9 +713,9 @@ function makeRooms(){
       currentNpc.addDialogue(new Dialogue(currentNpc, "Mortal, why have you descended to this dreary place?", "How pathetic!", "Remember your oath Orpheus. Do not look back!", "You made the wrong enemy Orpheus. I alone can persuade Hades!", "Tone it down!", "I do not need this offering."));      
       currentNpc.addAttack(new Attack(currentNpc, "slap", "enemy", "userAC", "d50", "Persephone reaches out to slap Orpheus.", "The attack hurls Orpheus across the room.", "Persephone misjudges her force and overstepped Orpheus. She almost went sprawling on the floor, but save herself with godly grace.", "The attack misses.", "Orpheus is damaged."));
       currentNpc.addResponseToGifts(new ResponseToGift(currentNpc, "pomegrante", "Orpheus, do you understand what you are holding in your hands? Do not meet the same fate as I!", true, false));
-      currentNpc.addResponseToMilestones(new ResponseToMilestone(currentNpc, "charmedPersephone", "Do not worry sweet Orpheus, I shall convince Hades in your stead; however, the laws of the Underworld must be obeyed. You shall not see her until you resurfaced.", false));
+      currentNpc.addResponseToMilestones(new ResponseToMilestone(currentNpc, "charmedPersephone", "Do not worry sweet Orpheus, I shall convince Hades in your stead; however, the laws of the Underworld must be obeyed. You shall not see her until both of you resurfaced.", false));
       
-    var spirit = new Thing(currentRoomCreation, "spirit", "It is the spirit of Eurydice! Orpheus is overcomed by joy and grief! It greatly sadden him that he could not look at his Eurydice right now.", "inifinity", false);
+    var spirit = new Thing(currentRoomCreation, "spirit", "It is the spirit of Eurydice! Orpheus is overcomed by joy and grief! It greatly sadden him that he could not look at his Eurydice right now.", "infinity", false);
       var currentThing = spirit;
       currentThing.addUsage(new Usage(currentThing, "any", "Orpheus daydreams about his future with Eurydice. His heart is filled and his vitality is restored!"));
         currentThing.usages[currentThing.usages.length-1].specialEffect = function(){
@@ -726,11 +726,11 @@ function makeRooms(){
 
 // Room[8] //    -------------------------------------------------------------------------------
     
-  rooms[8] = new Room("Overworld's Tunnel", "red", "Orpheus enters a long narrow tunnel. It is dirty, it is dusty, and it is dry. He held sole responsiblity for its creation, having carved it with his music. Strangely, there is a 20-sided dice on the floor. Treading up, Orpheus is reminded of the pains he felt, but he smiles. The shackle is off! Looking ahead he saw the shining light, signifying the end of his quest and the beginning of his reward.");  
+  rooms[8] = new Room("Overworld's Tunnel", "red", "Orpheus ascends through a long narrow tunnel. It is dirty, it is dusty, and it is dry. He held sole responsiblity for its creation, having carved it with his music. Strangely, there is a 20-sided dice on the floor. Treading up, Orpheus is reminded of the pains he felt, but he smiles. The shackle is off! Looking ahead he saw the shining light, signifying the end of his quest and the beginning of his reward.");  
   var currentRoomCreation = rooms[8];  
     currentRoomCreation.addExit("north", "The Underworld", null, null);
     currentRoomCreation.addExit("south", "Ancient Greece", "!atePomegrante", "The words echo in his his ears. Those who eat the fruits of the Underworld cans no longer returns to the world of light.");  
-    currentRoomCreation.addThing(new Thing(currentRoomCreation, "dice", "It is a 20-sided dice of polished bone. It exudes an eerie vibe.", "inifinity", true));
+    currentRoomCreation.addThing(new Thing(currentRoomCreation, "dice", "It is a 20-sided dice of polished bone. It exudes an eerie vibe.", "infinity", true));
       var currentThing = currentRoomCreation.things[currentRoomCreation.things.length-1];
         currentThing.takeQuestion = new Question(currentThing, "narrator", "#FF7518", "The dice was cursed! Orpheus feels an insatiable desire to turn around and take his beloved by the hand.<br>Make a charisma saving throw with 'roll dice'.", "Fight against the curse of being sidetracked Orpheus!");
         var currentQuestion = currentThing.takeQuestion;
@@ -772,7 +772,7 @@ function makeRooms(){
 
 // Room[9] //    -------------------------------------------------------------------------------
     
-  rooms[9] = new Room("Ancient Greece", "red", "Orpheus resurfaces to the meadow of old. The sun dawns on a distinct day, but the butterflies still flutter and the flowers bloom in vivid golds the way he remembered. The air smell sweet with the fragrance of honey and pollen. In the far distance, Orpheus observed an approaching presence. He noted it with Eurydice, but made no further remarks. Is it a bird? A god? No. It is the credit sequence! The scene concludes as Orpheus and Eurydice frolic beneath the shining sun, giver of life.");  
+  rooms[9] = new Room("Ancient Greece", "red", "Orpheus resurfaces to the meadow of old. The sun dawns on a distinct day, but the butterflies still flutter and the flowers bloom in vivid golds the way he remembered. The air smell sweet with the fragrance of honey and pollen. In the far distance, Orpheus observed an approaching presence. He noted it with Eurydice, but made no further remarks. Is it a bird? A god? No. It is the credit sequence! The quest concludes as Orpheus and Eurydice frolic beneath the shining sun, giver of life.");  
   var currentRoomCreation = rooms[9];  
     currentRoomCreation.addExit("north", "Overworld's Tunnel", null, null);  
     currentRoomCreation.specialEffect = function(){
@@ -785,7 +785,7 @@ function makeRooms(){
 
 function gameBackground(){
   textarea.innerHTML += "<span style='color: blue;; text-shadow: -0.5px 0.5px 1px black;'>Prelogue</span><br>";
-  textarea.innerHTML += "Long ago, there was a man by the name of Orpheus. He was a master of the lyre and was gifted even among the mythological heroes of Greece. He have, but one love: the fair Eurydice. On one sunlit day, darkness abruptly stormed above the star-crossed couples. As Eurydice danced across a blooming meadow with Orpheus playing his signature tune, a malicious snake sent Eurydice to her swift death with a decisive bite to the ankle. Devastated, Orpheus wills the door to the Underworld with his music, tainted by sorrow. Down he goes, and thus, the story goes.<br>";  
+  textarea.innerHTML += "Long ago, there was a man by the name of Orpheus. He was a master of the lyre and was gifted even among the mythological heroes of Greece. He have, but one love: the fair Eurydice. On one sunlit day, darkness abruptly stormed above the star-crossed couples. As Eurydice danced across a blooming meadow with Orpheus playing his signature lyre, a malicious snake sent Eurydice to her swift death with a decisive bite to the ankle. Devastated, Orpheus wills the door to the Underworld with his music, tainted by sorrow. Down he goes, and thus, the story goes.<br>";  
 }
 
 makeRooms();

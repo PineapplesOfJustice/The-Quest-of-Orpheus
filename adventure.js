@@ -598,17 +598,15 @@ function restart(){
   chest = [];
   explored = {};  
   milestone = [];
-  var orpheus = { 
-    name: "orpheus",
-    textColor: "#8DB600",
-    hp: 100,
-    ac: 12, 
-    status: "alive",
-    attacks: {},
-    addAttack: function(name, attack){
+  orpheus.name = "orpheus";
+  orpheus.textColor = "#8DB600";
+  orpheus.hp = 100;
+  orpheus.ac = 12;
+  orpheus.status = "alive";
+  orpheus.attacks = {};
+  orpheus.addAttack = function(name, attack){
       this.attacks[name] = attack;
-    }, 
-  };
+  }; 
   orpheus.addAttack("fist", new Attack(orpheus, "fist", "orpheus", 10, "d4", "Orpheus clenchs his fist and charges at", "It is a critical hit! The fist bruised the astonished foe.", "It is a critical failure! Orpheus sprained his arm in attempt to land a devastating punch.", "By sheer luck, the fist misses it marks. The enemy grins, the counterattack begins.", "The fist strucks its mark."));
   orpheus.addAttack("rock", new Attack(orpheus, "rock", "orpheus", 10, "d8", "Orpheus grips his obsidian rock and charges at", "It is a critical hit! The rock bruised the astonished foe.", "It is a critical failure! Orpheus stumbled and smacked himself with the rock.", "By sheer luck, the rock misses it marks. The enemy grins, the counterattack begins.", "The rock strucks its mark."));
   orpheus.addAttack("sword", new Attack(orpheus, "sword", "orpheus", 10, "d20", "Orpheus grips his sword and charges at", "It is a critical hit! The gleaming blade sliced the astonished foe.", "It is a critical failure! Orpheus stumbled on a conveniently placed rock and stubbed his toe.", "By sheer luck, the sword misses it marks. The enemy grins, the counterattack begins.", "The blade strucks its mark."));

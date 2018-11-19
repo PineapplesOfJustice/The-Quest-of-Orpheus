@@ -14,7 +14,7 @@
 
 body {
   /* background: url("http://spiralgraphics.biz/packs/terrain_volcanic_gaseous/previews/Deep%20Cave.jpg"); */
-  background-image: url("Images/Background/Underworld Wallpaper.jpg");
+  background: linear-gradient(rgba(45, 3, 70, 0.25), rgba(45, 3, 70, 0.25)), url("Images/Background/Underworld Wallpaper.jpg");
   padding: 0px;
   margin: 0px;
   margin-bottom: 0px;

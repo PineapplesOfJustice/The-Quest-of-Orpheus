@@ -46,6 +46,9 @@ function checkForDirection(object, property, val) {
   }  
 }
 
+
+chest.push(lyre);
+showInventory();
 function showInventory() {
   var tempString = "<ul>"
   for (var i of chest) {
@@ -149,7 +152,7 @@ function runCommand(e) {
       currentRoom.showExits()
     }
 
-    else if (firstWord == "go" || firstWord == "head" || firstWord == "advance" || firstWord == "venture") {
+    else if (firstWord == "go" || firstWord == "head" || firstWord == "advance" || firstWord == "venture" || firstWord == "return") {
       if (inputArray.length > 1) {
         if(inputArray[1] == 'south' || inputArray[1] == 'north' ||
           inputArray[1] == 'east' || inputArray[1] == 'west' ||
@@ -202,33 +205,29 @@ function runCommand(e) {
           }
           else if(requirementNeeded.includes("&&")){  
             var requirementArray = requirementNeeded.split("&&");
-            for(var x of requirementArray){
-              if(x.charAt(0) == "!"){   
+            var requirementHave = 0;
+            for(var x=0, thisLength=requirementArray.length; x<thisLength; x++){
+              if(requirementArray[x].charAt(0) == "!"){   
                 var notFound = true;  
                 for(var y of milestone){
-                  if(x == ("!" + y)) {  
+                  if(requirementArray[x] == ("!" + y)) {  
                     notFound = false;  
                   }
                 }
                 if(notFound){
-                  y = true;  
+                  requirementHave += 1;  
                 }  
               }
               else{    
                 for(var y of milestone){
-                  if(x == y) {  
-                    y = true;
+                  if(requirementArray[x] == y) {  
+                    requirementHave += 1;
                   }
                 }
               }
-              var testForFalse = true;  
-              for(var y of requirementArray){
-                if(!y) {  
-                  testForFalse = false;
-                }
-              }
-              if(testForFalse){  
-                requirementFound = true;  
+              if(requirementHave == requirementArray.length){
+                requirementFound = true;
+                milestoneFound = true;
               }
             }
           }
@@ -283,7 +282,11 @@ function runCommand(e) {
 
     else if (firstWord == "look" || firstWord == "inspect") {
       if (inputArray.length > 1) {
-        var result = [findElementInArray(currentRoom.things, 'name', inputArray[1]), findElementInArray(currentRoom.npcs, 'name', inputArray[1]), findElementInArray(chest, 'name', inputArray[1])];  
+        while(inputArray.length > 2){
+          inputArray[1] = inputArray[1].concat(inputArray[2]);
+          inputArray.splice(2, 1);  
+        }    
+        var result = [findElementInArray(currentRoom.things, 'name', inputArray[1]), findElementInArray(currentRoom.npcs, 'name', inputArray[1]), findElementInArray(chest, 'name', inputArray[1]), checkForDirection(currentRoom.exits, 'direction', inputArray[1]),  checkForDirection(currentRoom.exits, 'location', inputArray[1])];  
         if (result[0] != null) {
           result[0].showDescription()
         }  
@@ -292,6 +295,12 @@ function runCommand(e) {
         }
         else if (result[2] != null) {
           result[2].showDescription()
+        }
+        else if (result[3] != null) {  
+          currentRoom.exits[result[3]].showDescription()
+        }
+        else if (result[4] != null) {  
+          currentRoom.exits[result[4]].showDescription()
         }
         else{
             textarea.innerHTML += "Orpheus tries to look at " + inputArray[1] + ". He blinks twice.<br>"
@@ -419,16 +428,8 @@ function runCommand(e) {
   }
 }
 
-function attack(enemy) {   
-  enemy.status = "hostile";  
-  var tempString = "";  
-  var charmedText = "charmed" + capitalize(enemy.name);  
-  for(var i=0, length=milestone.length; i<length; i++){
-    if(milestone[i] == charmedText){
-      milestone.splice(i, 1);
-      i=length;  
-    }  
-  }  
+function attack(enemy) {     
+  var tempString = ""; 
   //Orpheus attack
     
   //One way to make an attack object for Orpheus is to have thing add an attack method to Orpheus. Then, have a property called priority to check which one will be executed. However, this game is pretty short, so that will just take more space than necessary.
@@ -478,15 +479,27 @@ function attack(enemy) {
   }
   
   if(enemy.hp <= 0){
-    textarea.innerHTML += tempString;
     enemy.status = "defeated";  
-    enemy.talk("defeated");        
+    enemy.talk("defeated");      
     if(enemy.respawn != null){
-      enemy.hp = enemy.respawn;
-      tempString = "The necromantic power of Hades respawned " + capitalize(enemy.name) + " from the whirling dust.<br>"  
+      enemy.hp = 0;  
+      enemy.hp += enemy.respawn.hp;
+      tempString += enemy.respawn.text;  
+      if(enemy.respawn.specialEffect != null){
+        enemy.respawn.specialEffect();  
+      }
     }  
     else{  
-      tempString = "The enemy slained, Orpheus prays for the departed spirit as the body crumpled to dust and is swept away.<br>";
+      tempString += "The enemy slained, Orpheus prays for the departed spirit as the body crumpled to dust and is swept away.<br>";
+      milestone.push("killed" + capitalize(enemy.name));  
+      enemy.status = "dead";   
+      //remove(currentRoom.npcs, enemy);
+    }
+    if(enemy.deadEffect != null){
+      enemy.deadEffect();
+    }         
+    else{  
+      tempString += "The enemy slained, Orpheus prays for the departed spirit as the body crumpled to dust and is swept away.<br>";
       milestone.push("killed" + capitalize(enemy.name));  
       enemy.status = "dead";   
       //remove(currentRoom.npcs, enemy);
@@ -495,14 +508,14 @@ function attack(enemy) {
   if(orpheus.hp <= 0){
     orpheus.status = "dead";
     orpheus.hp = 0;
+    tempString += "<span style='color: " + orpheus.textColor + ";'>[" + capitalize(orpheus.name) + "]</span>&ensp;I am sorry Eurydice! I will soon accompany you in Elysium!<br>";
     textarea.innerHTML += tempString;
     tempString = "";  
-    textarea.innerHTML += "<span style='color: " + orpheus.textColor + ";'>[" + capitalize(orpheus.name) + "]</span>&ensp;I am sorry Eurydice! I will soon accompany you in Elysium!<br>"
     gameOverText("battle");  
   }
             
   // Enemy attacks 
-  if(enemy.status == "hostile" && orpheus.status == "alive"){  
+  if(orpheus.status == "alive" && enemy.status != "dead"){  
     var chosenAttack = enemy.attacks[Math.floor(Math.random()*enemy.attacks.length)];  
     //console.log(chosenAttack)
     tempString += chosenAttack.text.initiation;
@@ -565,32 +578,46 @@ function attack(enemy) {
     }
         
     if(enemy.hp <= 0){
-      textarea.innerHTML += tempString;
       enemy.status = "defeated";  
       enemy.talk("defeated");    
       if(enemy.respawn != null){
-        enemy.hp = enemy.respawn;
-        tempString = "The necromantic power of Hades respawned " + capitalize(enemy.name) + " from the whirling dust.<br>"  
+        enemy.hp = 0;  
+        enemy.hp += enemy.respawn.hp;
+        tempString += enemy.respawn.text;  
+        if(enemy.respawn.specialEffect != null){
+          enemy.respawn.specialEffect();  
+        }
       }  
       else{  
-        tempString = "The enemy slained, Orpheus prays for the departed spirit as the body crumpled to dust and is swept away.<br>";
+        tempString += "The enemy slained, Orpheus prays for the departed spirit as the body crumpled to dust and is swept away.<br>";
         milestone.push("killed" + capitalize(enemy.name));  
         enemy.status = "dead";   
         //remove(currentRoom.npcs, enemy);
+      }
+      if(enemy.deadEffect != null){
+        enemy.deadEffect();
       }
     }         
     if(orpheus.hp <= 0){
       orpheus.status = "dead";
       orpheus.hp = 0;
-      textarea.innerHTML += tempString;
-      tempString = "";  
-      textarea.innerHTML += "<span style='color: " + orpheus.textColor + ";'>[" + capitalize(orpheus.name) + "]</span>&ensp;I am sorry Eurydice! I will soon arrives to where you are!<br>"
+      tempString += "<span style='color: " + orpheus.textColor + ";'>[" + capitalize(orpheus.name) + "]</span>&ensp;I am sorry Eurydice! I will soon arrives to where you are!<br>"
       gameOverText("battle");  
     }
   }    
+  if(enemy.status != "hostile" && enemy.status != "dead"){   
+    enemy.status = "hostile"; 
+    tempString += capitalize(enemy.name) + " becomes hostile.<br>";  
+    var charmedText = "charmed" + capitalize(enemy.name);  
+    for(var i=0, length=milestone.length; i<length; i++){
+      if(milestone[i] == charmedText){
+        milestone.splice(i, 1);
+        i=length;  
+      }  
+    }  
+  }  
   textarea.innerHTML += tempString;
   showStatus();  
-  
 }
 
 function restart(){
@@ -621,6 +648,7 @@ function restart(){
   currentRoom.showDescription();
   currentRoom.showThings(); 
   currentRoom.showExits(); 
+  chest.push(lyre);
   showStatus();
   showInventory();  
   //scrollSmoothToTop();  
@@ -630,13 +658,16 @@ function gameOverText(cause){
   if (cause == "battle") {
       
   } 
-  else if (cause == "pomegrante") {
+  else if (cause == "pomegranate") {
       
   } 
   else if (cause == "river") {
       
   } 
   else if (cause == "cave") {
+      
+  } 
+  else if (cause == "transformation") {
       
   } 
   else if (cause == "lostEurydice") {

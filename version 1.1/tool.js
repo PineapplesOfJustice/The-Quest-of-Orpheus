@@ -50,6 +50,11 @@ function characterDialogue(characterName, characterColor, characterText){
     return currentDialogue;
 }
 
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
 /***** Constructor functions *****/
 
 // ROOM object

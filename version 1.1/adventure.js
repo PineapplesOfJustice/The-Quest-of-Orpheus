@@ -21,10 +21,6 @@ function showCommand(command) {
   textarea.innerHTML += "<span class='commandtext'>>> " + command + "</span><br>"  
 }
 
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 /****** Game interaction *******/
 
 userCommand.addEventListener("keyup", runCommand);

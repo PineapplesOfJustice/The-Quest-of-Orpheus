@@ -302,7 +302,21 @@ function runCommand(e) {
     }
 
     else if (firstWord == "talk" || firstWord == "speak" || firstWord == "converse") {
-      if (inputArray.length > 1) {  
+      if (inputArray.length > 1 && inputArray[1] == "narrator") {
+        tempString = "Orpheus tries to talk to the narrator.<br>" + characterDialogue("narrator", "#FF7518", "Hey. You can't break the fourth wall!")
+        var damageRoll = Math.floor(Math.random()*4)+1;
+        orpheus.hp -= damageRoll;
+        tempString += "The narrator punishes Orpheus. (" + damageRoll + ")<br>Orpheus took " + damageRoll + " psychic damage.<br>"
+        textarea.innerHTML += tempString;
+        if (orpheus.hp <= 0){  
+          orpheus.status = "dead";
+          orpheus.hp = 0;
+          textarea.innerHTML += characterDialogue(capitalize(orpheus.name), orpheus.textColor, "I am sorry Eurydice! I will soon accompany you in Elysium!");  
+          gameOverText("battle");
+        }
+        showStatus();  
+      }
+      else if (inputArray.length > 1){
         var result = findElementInArray(currentRoom.npcs, 'name', inputArray[1])
         if (result != null) {
           result.talk(); 
@@ -358,12 +372,10 @@ function runCommand(e) {
         }
         else {
           textarea.innerHTML += "Orpheus tries to attack " + inputArray[1] + ". An anonymous soul watches in silence and slowly tiptoes to the far end of the room.<br>"
-          
         }
       }
       else {
         textarea.innerHTML += "Orpheus tries to attack an undefined object. An anonymous soul watches in silence and slowly tiptoes to the far end of the room.<br>"
-        
       }  
     }
       
@@ -425,7 +437,9 @@ function attack(enemy) {
   }
   
   if(enemy.hp <= 0){
-    enemy.status = "defeated";  
+    enemy.status = "defeated";   
+    textarea.innerHTML += tempString;
+    tempString = ""
     enemy.talk("defeated");      
     if(enemy.respawn != null){
       enemy.hp = 0;  
@@ -443,21 +457,17 @@ function attack(enemy) {
     }
     if(enemy.deadEffect != null){
       enemy.deadEffect();
-    }         
-    else{  
+    }  
+    /*else{  
       tempString += "The enemy slained, Orpheus prays for the departed spirit as the body crumpled to dust and is swept away.<br>";
       milestone.push("killed" + capitalize(enemy.name));  
       enemy.status = "dead";   
       //remove(currentRoom.npcs, enemy);
-    }
+    }*/
   }         
   if(orpheus.hp <= 0){
     orpheus.status = "dead";
     orpheus.hp = 0;
-    tempString += characterDialogue(capitalize(orpheus.name), orpheus.textColor, "I am sorry Eurydice! I will soon accompany you in Elysium!");
-    textarea.innerHTML += tempString;
-    tempString = "";  
-    gameOverText("battle");  
   }
             
   // Enemy attacks 
@@ -525,6 +535,8 @@ function attack(enemy) {
         
     if(enemy.hp <= 0){
       enemy.status = "defeated";  
+      textarea.innerHTML += tempString;
+      tempString = ""
       enemy.talk("defeated");    
       if(enemy.respawn != null){
         enemy.hp = 0;  
@@ -546,12 +558,10 @@ function attack(enemy) {
     }         
     if(orpheus.hp <= 0){
       orpheus.status = "dead";
-      orpheus.hp = 0;
-      tempString += characterDialogue(capitalize(orpheus.name), orpheus.textColor, "I am sorry Eurydice! I will soon arrives to where you are!");
-      gameOverText("battle");  
+      orpheus.hp = 0; 
     }
   }    
-  if(enemy.status != "hostile" && enemy.status != "dead"){   
+  if(orpheus.status != "dead" && enemy.status != "hostile" && enemy.status != "dead"){   
     enemy.status = "hostile"; 
     tempString += capitalize(enemy.name) + " becomes hostile.<br>";  
     var charmedText = "charmed" + capitalize(enemy.name);  
@@ -562,7 +572,11 @@ function attack(enemy) {
       }  
     }  
   }  
-  textarea.innerHTML += tempString;
+  textarea.innerHTML += tempString; 
+  if(orpheus.status == "dead"){
+    textarea.innerHTML += characterDialogue(capitalize(orpheus.name), orpheus.textColor, "I am sorry Eurydice! I will soon accompany you in Elysium!");  
+    gameOverText("battle");  
+  }
   showStatus();  
 }
 
